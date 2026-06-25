@@ -14,13 +14,15 @@ jobs:
       - name: Checkout Repository Code
         uses: actions/checkout@v4
 
-      # Step 2: Install dependencies globally on the host machine
+      # Step 2: Install dependencies globally on the host machine using PowerShell syntax
       - name: Install Dependencies
+        shell: powershell
         run: |
-          if [ -f requirements.txt ]; then
-            python3 -m pip install --break-system-packages -r requirements.txt
-          fi
+          if (Test-Path requirements.txt) {
+              python -m pip install -r requirements.txt
+          }
 
-      # Step 3: Run the script globally
+      # Step 3: Run the script globally using Windows python executable
       - name: Execute Python App
-        run: python3 main.py
+        shell: powershell
+        run: python main.py

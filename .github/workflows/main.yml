@@ -6,8 +6,10 @@ on:
       - main
 
 env:
-  # Ensures seamless compliance with the June 2026 GitHub Actions Node upgrade requirements
+  # Ensures seamless compliance with GitHub Actions requirements
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+  # Forces Python to use UTF-8 encoding on Windows to prevent Emoji/Unicode crashes
+  PYTHONUTF8: 1
 
 jobs:
   run-python-script:

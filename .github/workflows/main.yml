@@ -14,15 +14,15 @@ jobs:
       - name: Checkout Repository Code
         uses: actions/checkout@v4
 
-      # Step 2: Install dependencies globally on the host machine using PowerShell syntax
+      # Step 2: Install dependencies using Windows CMD syntax to bypass PowerShell policies
       - name: Install Dependencies
-        shell: powershell
+        shell: cmd
         run: |
-          if (Test-Path requirements.txt) {
+          if exist requirements.txt (
               python -m pip install -r requirements.txt
-          }
+          )
 
-      # Step 3: Run the script globally using Windows python executable
+      # Step 3: Run the script using Windows CMD
       - name: Execute Python App
-        shell: powershell
+        shell: cmd
         run: python main.py

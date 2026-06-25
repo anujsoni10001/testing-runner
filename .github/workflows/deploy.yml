@@ -1,0 +1,26 @@
+name: Deploy and Run Python Code
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-python-script:
+    runs-on: [self-hosted, python-runner]
+
+    steps:
+      # Step 1: Pull the latest code onto your machine
+      - name: Checkout Repository Code
+        uses: actions/checkout@v4
+
+      # Step 2: Install dependencies globally on the host machine
+      - name: Install Dependencies
+        run: |
+          if [ -f requirements.txt ]; then
+            python3 -m pip install --break-system-packages -r requirements.txt
+          fi
+
+      # Step 3: Run the script globally
+      - name: Execute Python App
+        run: python3 main.py

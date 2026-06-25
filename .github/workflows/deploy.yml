@@ -7,7 +7,7 @@ on:
 
 jobs:
   run-python-script:
-    runs-on: [self-hosted, python-runner]
+    runs-on: [self-hosted, Windows]
 
     steps:
       # Step 1: Pull the latest code onto your machine
